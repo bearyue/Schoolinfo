@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="55dp"
+              android:orientation="vertical"
+              android:background="#278CDE">
+    #F66A6B
+
+    <ImageView
+            android:id="@+id/cursor"
+            android:layout_width="25dip"
+            android:layout_height="2dip"
+            android:layout_marginLeft="32.25dp"
+            android:layout_marginTop="3.5dp"
+            android:scaleType="matrix"
+            android:src="#FFFFFF"/>
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:orientation="horizontal"
+            >
+
+        <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="fill_parent"
+                android:gravity="center"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:id="@+id/tab_first"
+                >
+            <ImageButton
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:clickable="false"
+                    android:id="@+id/tab_first_img"
+                    android:background="@drawable/tab_first_selected"
+                    android:scaleType="fitXY"
+                    android:layout_marginBottom="10dp"
+                    />
+            <!-- <TextView
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 android:text="新闻"
+                 android:textStyle="bold"
+                 android:id="@+id/tab_first_text"
+                 android:textColor="#ffffff"/>-->
+
+        </LinearLayout>
+
+        <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="fill_parent"
+                android:gravity="center"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:id="@+id/tab_second"
+                >
+            <ImageButton
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:background="@drawable/tab_second"
+                    android:clickable="false"
+                    android:id="@+id/tab_second_img"
+                    android:scaleType="fitXY"
+                    android:layout_marginBottom="10dp"
+
+                    />
+            <!-- <TextView
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 android:text="圈子"
+                 android:id="@+id/tab_second_text"
+                 android:textStyle="bold"
+                 android:textColor="#ffffff"/>-->
+
+        </LinearLayout>
+
+        <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="fill_parent"
+                android:gravity="center"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:id="@+id/tab_third"
+                >
+            <ImageButton
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:background="@drawable/tab_third"
+                    android:clickable="false"
+                    android:id="@+id/tab_third_img"
+                    android:scaleType="fitXY"
+                    android:layout_marginBottom="10dp"
+                    />
+            <!--   <TextView
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:text="信息"
+                   android:id="@+id/tab_third_text"
+                   android:textStyle="bold"
+                   android:textColor="#ffffff"/>-->
+
+        </LinearLayout>
+
+        <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="fill_parent"
+                android:gravity="center"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:id="@+id/tab_fouth"
+
+                >
+            <ImageButton
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:background="@drawable/tab_fouth"
+                    android:clickable="false"
+                    android:id="@+id/tab_fouth_img"
+                    android:scaleType="fitXY"
+                    android:layout_marginBottom="10dp"
+                    />
+            <!-- <TextView
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 android:text="我"
+                 android:id="@+id/tab_fouth_text"
+                 android:textStyle="bold"
+                 android:textColor="#ffffff"/>-->
+
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>

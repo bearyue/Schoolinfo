@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="fill_parent"
+              android:layout_height="wrap_content"
+
+        >
+    <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            >
+        <com.android.volley.toolbox.NetworkImageView
+                android:layout_width="75dp"
+                android:layout_height="65dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginLeft="8dp"
+                android:id="@+id/shop_image"
+                />
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="隆江猪脚饭"
+                android:layout_toRightOf="@+id/shop_image"
+                android:layout_marginTop="8dp"
+                android:layout_marginLeft="10dp"
+                android:textSize="16dp"
+                android:textStyle="bold"
+                android:id="@+id/shop_name"
+                android:textColor="@color/black"
+                />
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="足球场旁"
+                android:layout_toRightOf="@id/shop_image"
+                android:layout_below="@id/shop_name"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="5dp"
+                android:id="@+id/shop_address"
+                />
+        <LinearLayout
+                android:layout_width="250dp"
+                android:layout_height="0.7dp"
+                android:layout_toRightOf="@id/shop_image"
+                android:layout_marginLeft="10dp"
+                android:layout_below="@+id/shop_address"
+                android:layout_marginTop="5dp"
+                android:background="@color/gray"
+                android:orientation="vertical"
+                android:id="@+id/line5"
+                ></LinearLayout>
+
+        <TextView
+                android:layout_width="260dp"
+                android:layout_height="40dp"
+                android:text="全场8.8折d"
+                android:layout_toRightOf="@+id/shop_image"
+                android:layout_below="@+id/line5"
+                android:layout_marginTop="8dp"
+                android:layout_marginLeft="10dp"
+                android:id="@+id/shop_other"
+                android:textColor="@color/red"
+                />
+
+    </RelativeLayout>
+
+</LinearLayout>

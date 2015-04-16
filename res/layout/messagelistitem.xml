@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="350dp"
+    android:background="@drawable/ll"
+    android:minHeight="350dp">
+
+    <RelativeLayout
+            android:layout_width="320dp"
+            android:layout_height="260dp"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true">
+        <TextView
+                android:id="@+id/message_content"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:textSize="24dp"
+                android:text="天气好天口量将气好"
+                android:textColor="@color/white"/>
+
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="20dp"
+        android:text="time"
+        android:paddingBottom="25dp"
+        android:textColor="#FFFFFF"
+         />
+    
+    <TextView
+        android:id="@+id/goodtimes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="goodtime"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:paddingBottom="25dp"
+        android:layout_marginRight="51dp"
+        android:textColor="#FFFFFF"/>
+
+    <ImageButton
+            android:id="@+id/good_button"
+            android:layout_width="26dp"
+            android:layout_height="26dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="20dp"
+            android:scaleType="fitXY"
+            android:layout_marginTop="300dp"
+            android:background="@drawable/thumbs_up"
+            />
+
+
+</RelativeLayout>

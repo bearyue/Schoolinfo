@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="planets_array">
+        <item>   全部</item>
+        <item>   商超</item>
+        <item>   美食</item>
+        <item>   服务</item>
+        <item>   购物</item>
+    </string-array>
+</resources>

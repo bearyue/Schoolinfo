@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+    <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:background="#F05133"
+            android:id="@+id/top">
+
+        <ImageButton
+                android:layout_width="32dp"
+                android:layout_height="28dp"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="2dp"
+                android:background="@drawable/button_back"
+                android:id="@+id/key_back"
+                />
+
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/title"
+                android:textColor="#ffffff"
+                android:textSize="25sp"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:textStyle="bold"
+                android:text="@string/register"/>
+    </RelativeLayout>
+
+
+    <EditText
+            android:id="@+id/registername"
+            android:layout_width="300dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:background="#ffffff"
+            android:hint="用户名"
+            android:inputType="textEmailAddress"
+            android:maxLength="20"
+            android:paddingLeft="15dp"
+            android:singleLine="true"
+            android:text=""
+            android:textColor="#ff000000"
+            android:textColorHint="#ffbbbbbb"
+            android:textSize="16.0dip" />
+    <EditText
+            android:id="@+id/registerpassword"
+            android:layout_width="300dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:background="#ffffff"
+            android:hint="密码"
+            android:inputType="textPassword"
+            android:maxLength="12"
+            android:paddingLeft="15dp"
+            android:singleLine="true"
+            android:text=""
+            android:textColor="#ff000000"
+            android:textColorHint="#ffbbbbbb"
+            android:textSize="16.0dip"/>
+
+    <EditText
+            android:id="@+id/confirmpassword"
+            android:layout_width="300dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:background="#ffffff"
+            android:hint="确认密码"
+            android:inputType="textPassword"
+            android:maxLength="12"
+            android:paddingLeft="15dp"
+            android:singleLine="true"
+            android:text=""
+            android:textColor="#ff000000"
+            android:textColorHint="#ffbbbbbb"
+            android:textSize="16.0dip"/>
+    <EditText
+            android:id="@+id/useremail"
+            android:layout_width="300dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:background="#ffffff"
+            android:hint="邮箱"
+            android:inputType="textEmailAddress"
+            android:maxLength="50"
+            android:paddingLeft="15dp"
+            android:singleLine="true"
+            android:text=""
+            android:textColor="#ff000000"
+            android:textColorHint="#ffbbbbbb"
+            android:textSize="16.0dip"/>
+    <Button
+            android:id="@+id/key_register2"
+            android:layout_width="300dp"
+            android:layout_height="40dp"
+            android:layout_below="@+id/userpassword"
+            android:layout_marginTop="15dp"
+            android:layout_gravity="center"
+            android:text="@string/register"
+            android:textColor="#FFFFFF"
+            android:background="@drawable/bg_button_register2"/>
+
+
+</LinearLayout>

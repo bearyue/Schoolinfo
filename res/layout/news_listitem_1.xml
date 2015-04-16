@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="fill_parent"
+              android:layout_height="105dp"
+              android:background="@drawable/item_bg"
+             >
+
+        <TextView
+                android:id="@+id/news_title"
+                android:layout_width="wrap_content"
+                android:layout_height="55dp"
+                android:text="赵平副校长谈大学文化及其建设"
+                android:textSize="16dp"
+                android:textStyle="bold"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="7dp"
+                android:layout_alignParentLeft="true"
+                android:layout_toLeftOf="@+id/news_img"/>
+        <TextView
+                android:id="@+id/news_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/news_title"
+                android:text="1205"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="15dp"
+                />
+    <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="0.3dp"
+            android:layout_below="@id/news_time"
+            android:layout_marginTop="5dp"
+            android:background="@color/gray"
+            ></LinearLayout>
+
+
+    <com.android.volley.toolbox.NetworkImageView
+            android:id="@+id/news_img"
+            android:layout_width="100dp"
+            android:layout_height="85dp"
+            android:layout_marginTop="10dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="10dp"
+            />
+
+
+</RelativeLayout>
