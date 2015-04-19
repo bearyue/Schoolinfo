@@ -22,6 +22,8 @@ public class activity_web extends Activity {
     String address;
     WebView webView;
     ImageButton closebtn;
+    ProgressBar web_pb;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,7 +32,8 @@ public class activity_web extends Activity {
 
         Bundle bundle = getIntent().getExtras();
         address = bundle.getString("address");
-        Toast.makeText(this, "address: "+address, Toast.LENGTH_SHORT).show();
+        //Toast.makeText(this, "address: "+address, Toast.LENGTH_SHORT).show();
+        web_pb= (ProgressBar) findViewById(R.id.web_pb);
         closebtn = (ImageButton) findViewById(R.id.news_close);
         closebtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -71,8 +74,20 @@ public class activity_web extends Activity {
                 return true;
             }
         });
-
-
+        webView.setWebChromeClient(new WebChromeClient() {
+            @Override
+            public void onProgressChanged(WebView view, int newProgress) {
+                if (newProgress == 100) {
+                    web_pb.setVisibility(View.GONE);
+                } else {
+                    if (View.INVISIBLE == web_pb.getVisibility()) {
+                        web_pb.setVisibility(View.VISIBLE);
+                    }
+                    web_pb.setProgress(newProgress);
+                }
+                super.onProgressChanged(view, newProgress);
+            }
+        });
     }
 
     //改写物理按键——返回的逻辑

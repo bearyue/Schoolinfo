@@ -1,5 +1,6 @@
 package com.example.school;
 
+import android.app.Notification;
 import android.content.Intent;
 import android.graphics.Matrix;
 import android.support.v4.app.*;
@@ -355,9 +356,13 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
         CustomPushNotificationBuilder builder = new CustomPushNotificationBuilder(this,R.layout.customer_notitfication_layout,R.id.notitfication_icon, R.id.notitfication_title, R.id.notitfication_text);
         builder.layoutIconDrawable = R.drawable.n_icon;
         builder.statusBarDrawable = R.drawable.n_icon;
+       // builder.notificationDefaults=Notification.DEFAULT_SOUND| Notification.DEFAULT_VIBRATE|Notification.FLAG_SHOW_LIGHTS;
+        builder.notificationDefaults=Notification.DEFAULT_ALL;
         JPushInterface.setDefaultPushNotificationBuilder(builder);
         //Toast.makeText(this,"Custom Builder - 2", Toast.LENGTH_SHORT).show();
     }
+
+
 
 
 }
