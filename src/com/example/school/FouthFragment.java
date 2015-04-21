@@ -19,7 +19,7 @@ import com.bear.util.ipaddressUtil;
  */
 public class FouthFragment extends Fragment {
 
-    Button cancellation_btn;
+   // Button cancellation_btn;
     SharedPreferencesUtil userinfo;
     private MainActivity activity;
     RelativeLayout my_info_item;
@@ -31,7 +31,7 @@ public class FouthFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.tab_fouth, container,false);
 
-        cancellation_btn = (Button)view.findViewById(R.id.cancellation_button);
+    //    cancellation_btn = (Button)view.findViewById(R.id.cancellation_button);
         my_info_item= (RelativeLayout) view.findViewById(R.id.my_info);
         my_collection_item= (RelativeLayout) view.findViewById(R.id.my_collection);
         my_username = (TextView) view.findViewById(R.id.my_username);
@@ -40,13 +40,14 @@ public class FouthFragment extends Fragment {
         userinfo= new SharedPreferencesUtil(this.getActivity());
         if(!userinfo.getLoginState())
         {
-            cancellation_btn.setText("ÇëµÇÂ¼");
+           // cancellation_btn.setText("ÇëµÇÂ¼");
         }else{
             String name =userinfo.getName();
             my_username.setText(name);
             user_icon.setBackgroundResource(R.drawable.logined_icon);
         }
-        cancellation_btn.setOnClickListener(new View.OnClickListener() {
+
+        /*cancellation_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 cancellation_btn.setBackgroundResource(R.drawable.cancellation_bg);
@@ -54,7 +55,7 @@ public class FouthFragment extends Fragment {
                 startActivity(new Intent(activity,activity_login.class));
                 activity.finish();
             }
-        });
+        });*/
 
         user_icon.setOnClickListener(new View.OnClickListener() {
             @Override

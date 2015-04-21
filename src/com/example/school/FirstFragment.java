@@ -23,7 +23,9 @@ import com.android.volley.toolbox.Volley;
 import com.bear.model.News;
 import com.bear.util.BitmapCache;
 import com.bear.util.GsonUtil;
+import com.bear.util.InternalFileUtil;
 import com.bear.util.ipaddressUtil;
+import com.squareup.picasso.Picasso;
 
 import java.text.SimpleDateFormat;
 import java.util.*;
@@ -52,6 +54,10 @@ public class FirstFragment extends Fragment implements View.OnClickListener {
     private MainActivity activity;
     int is_refresh_success=0;
 
+    private String filename="newstext";
+    InternalFileUtil ifile;
+    LinkedList<News> savelist=null;
+
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.tab_first, container,false);
@@ -63,12 +69,15 @@ public class FirstFragment extends Fragment implements View.OnClickListener {
         lv= (ListView) view.findViewById(R.id.news_listview);
         adapter = new MyAdapter(FirstFragment.this.getActivity());
         lv.setAdapter(adapter);
+
+        initonclick();
+        ifile = new InternalFileUtil(this.getActivity(),filename);
+        ifile.create();
+        loadsavelist();
         if(open){
             new GetDataTask().execute(URLSTRING);
             open=false;
         }
-
-        initonclick();
 
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -80,6 +89,15 @@ public class FirstFragment extends Fragment implements View.OnClickListener {
             }
         });
          return view;
+    }
+
+    private void loadsavelist() {
+        if(ifile.read()!=""){
+            savelist = GsonUtil.getNewsListFromJson(ifile.read());
+            System.out.println("savelist:"+ifile.read());
+            dataList = getadapterdata(savelist);
+            adapter.notifyDataSetChanged();
+        }
     }
 
 
@@ -163,6 +181,8 @@ public class FirstFragment extends Fragment implements View.OnClickListener {
             }else{
                 is_refresh_success=1;
                 if(listsize==0){
+                    ifile.clean();
+                    ifile.write(result);
                     list=GsonUtil.getNewsListFromJson(result);
                     listsize=list.size();
                     dataList=getadapterdata(list);
@@ -170,7 +190,7 @@ public class FirstFragment extends Fragment implements View.OnClickListener {
                     updatelist=GsonUtil.getNewsListFromJson(result);
                     loadmoredate(updatelist);
                 }
-                System.out.println("finish   " +dataList.size());
+                System.out.println("finish   " + dataList.size());
                 adapter.notifyDataSetChanged();
             }
             super.onPostExecute(result);
@@ -235,6 +255,7 @@ public class FirstFragment extends Fragment implements View.OnClickListener {
 
     public void refreshlist(){
         new GetDataTask().execute(URLSTRING);
+
         if(is_refresh_success==1){
             Handler delay = new Handler();
             delay.postDelayed(new NewsUpdateToast(),1800);
@@ -285,6 +306,7 @@ public class FirstFragment extends Fragment implements View.OnClickListener {
                     holder.title = (TextView) convertView.findViewById(R.id.news_title);
                     holder.time = (TextView) convertView.findViewById(R.id.news_time);
                     holder.news_img = (NetworkImageView) convertView.findViewById(R.id.news_img);
+                    holder.news_imageview = (ImageView) convertView.findViewById(R.id.news_imgview);
                     convertView.setTag(holder);//∞Û∂®ViewHolder∂‘œÛ
                 }
                 else{
@@ -304,11 +326,14 @@ public class FirstFragment extends Fragment implements View.OnClickListener {
             holder.time.setText(dataList.get(position).get("news_time").toString());
             if(type==0){
                 final String imgUrl = dataList.get(position).get("news_img").toString();   //list[position];
-                if (imgUrl != null && !imgUrl.equals("")) {
+
+                Picasso.with(getActivity()).load(imgUrl).into(holder.news_imageview);
+
+                /*if (imgUrl != null && !imgUrl.equals("")) {
                     holder.news_img.setDefaultImageResId(R.drawable.loading);
                     holder.news_img.setErrorImageResId(R.drawable.error);
                     holder.news_img.setImageUrl(imgUrl, imageLoader);
-                }
+                }*/
             }
 
 
@@ -321,6 +346,7 @@ public class FirstFragment extends Fragment implements View.OnClickListener {
         public TextView title;
         public TextView time;
         public NetworkImageView news_img;
+        public ImageView news_imageview;
     }
 
     @Override

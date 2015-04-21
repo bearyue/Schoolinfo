@@ -36,9 +36,11 @@
     <uses-permission android:name="android.permission.CALL_PHONE"/>
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
+    <uses-permission android:name="android.permission.CHANGE_CONFIGURATION" />
+
     <application
         android:allowBackup="true"
-        android:icon="@drawable/ic_launcher"
+        android:icon="@drawable/launcher_icon"
         android:label="@string/app_name"
         android:theme="@android:style/Theme.Holo.Light.NoActionBar"
             >
@@ -73,6 +75,10 @@
                 android:name="com.bear.activity.activity_my_collection"
                 android:screenOrientation="portrait">
         </activity>
+        <activity
+                android:name="com.bear.activity.activity_map"
+                android:screenOrientation="portrait">
+        </activity>
 
         <activity
                 android:name="com.bear.activity.activity_splash"
@@ -103,7 +109,7 @@
                 android:enabled="true" >
             <intent-filter android:priority="1000">
                 <action android:name="cn.jpush.android.intent.NOTIFICATION_RECEIVED_PROXY" />   <!--Required  显示通知栏 -->
-                <category android:name="com.example.jpush.app1" />
+                <category android:name="com.example.school" />
             </intent-filter>
             <intent-filter>
                 <action android:name="android.intent.action.USER_PRESENT" />
@@ -133,6 +139,23 @@
                 android:enabled="true"
                 android:exported="false" >
         </service>
+
+        <!-- User defined.  For test only  用户自定义的广播接收器-->
+        <receiver
+                android:name="com.bear.util.MyReceiver"
+                android:enabled="true">
+            <intent-filter>
+                <action android:name="cn.jpush.android.intent.REGISTRATION" /> <!--Required  用户注册SDK的intent-->
+                <action android:name="cn.jpush.android.intent.UNREGISTRATION" />
+                <action android:name="cn.jpush.android.intent.MESSAGE_RECEIVED" /> <!--Required  用户接收SDK消息的intent-->
+                <action android:name="cn.jpush.android.intent.NOTIFICATION_RECEIVED" /> <!--Required  用户接收SDK通知栏信息的intent-->
+                <action android:name="cn.jpush.android.intent.NOTIFICATION_OPENED" /> <!--Required  用户打开自定义通知栏的intent-->
+                <action android:name="cn.jpush.android.intent.ACTION_RICHPUSH_CALLBACK" /> <!--Optional 用户接受Rich Push Javascript 回调函数的intent-->
+                <action android:name="cn.jpush.android.intent.CONNECTION" /><!-- 接收网络变化 连接/断开 since 1.6.3 -->
+                <category android:name="com.example.school" />
+            </intent-filter>
+        </receiver>
+
         <!-- Required SDK核心功能-->
         <receiver android:name="cn.jpush.android.service.AlarmReceiver" />
         <!-- Required. For publish channel feature -->
@@ -142,9 +165,11 @@
         <!-- 发到其他市场的 APK 可以设置为 xxx-market。 -->
         <!-- 目前这个渠道统计功能的报表还未开放。-->
         <meta-data android:name="JPUSH_CHANNEL" android:value="developer-default"/>
-        <!-- Required. AppKey copied from Portal -->
-        <meta-data android:name="JPUSH_APPKEY" android:value="0ae2277d073ae6dc722008c7"/>
+        <meta-data android:name="JPUSH_APPKEY" android:value="ad1b18f68a90ac5f3ed4e41b"/>
 
+        <meta-data
+                android:name="com.amap.api.v2.apikey"
+                android:value="24300a6abfdeacde8e342816cdc80115"/>
     </application>
 
 </manifest>

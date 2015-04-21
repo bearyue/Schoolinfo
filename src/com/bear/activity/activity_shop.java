@@ -38,6 +38,7 @@ public class activity_shop extends Activity {
     private static final String URLSTRING1 = ipaddressUtil.IP + "/SchoolInfo/servlet/CollectionServlet";
 
     ImageButton back_btn;
+    ImageButton location_btn;
     ExpandableListView lv;
     List<Map<String, Object>> dataList = new ArrayList<Map<String, Object>>();
     MyExpandableAdapter expandadapter = null;
@@ -62,17 +63,30 @@ public class activity_shop extends Activity {
         setContentView(R.layout.activity_shop);
 
         back_btn = (ImageButton) findViewById(R.id.shop_back);
+        location_btn = (ImageButton) findViewById(R.id.location_btn);
         sp = (Spinner) findViewById(R.id.shop_spinner);
         lv = (ExpandableListView) findViewById(R.id.shop_list);
+        userinfo = new SharedPreferencesUtil(this);
+        loginstate = userinfo.getLoginState();
+        user_id = userinfo.getId();
+
         back_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 finish();
             }
         });
-        userinfo = new SharedPreferencesUtil(this);
-        loginstate = userinfo.getLoginState();
-        user_id = userinfo.getId();
+        location_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                location_btn.setBackgroundResource(R.drawable.location_btn);
+                String web_address="http://yuntu.amap.com/share/V3aUb2";
+                Intent intent = new Intent(getApplication(), activity_location_web.class);
+                intent.putExtra("address",web_address);
+                startActivity(intent);
+                overridePendingTransition(R.anim.zoomin,R.anim.zoomout);
+            }
+        });
 
         setarrayadapter();
         expandadapter = new MyExpandableAdapter(getApplication());
@@ -310,7 +324,7 @@ public class activity_shop extends Activity {
             // holder.shop_tel.setText(dataList.get(position).get("shop_tel").toString());
             holder.shop_other.setText(dataList.get(groupPosition).get("shop_other").toString());
 
-            final String imgUrl = dataList.get(groupPosition).get("shop_img").toString();   //list[position];
+            final String imgUrl = ipaddressUtil.IP+dataList.get(groupPosition).get("shop_img").toString();   //list[position];
             if (imgUrl != null && !imgUrl.equals("")) {
                 holder.shop_img.setDefaultImageResId(R.drawable.loading);
                 holder.shop_img.setErrorImageResId(R.drawable.error);

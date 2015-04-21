@@ -36,6 +36,10 @@
     <uses-permission android:name="android.permission.CALL_PHONE"/>
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
+    <uses-permission android:name="android.permission.CHANGE_CONFIGURATION" />
+
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+
     <application
         android:allowBackup="true"
         android:icon="@drawable/launcher_icon"
@@ -71,6 +75,18 @@
         </activity>
         <activity
                 android:name="com.bear.activity.activity_my_collection"
+                android:screenOrientation="portrait">
+        </activity>
+        <activity
+                android:name="com.bear.activity.activity_map"
+                android:screenOrientation="portrait">
+        </activity>
+        <activity
+                android:name="com.bear.activity.activity_location_web"
+                android:screenOrientation="portrait">
+        </activity>
+        <activity
+                android:name="com.bear.activity.activity_setting"
                 android:screenOrientation="portrait">
         </activity>
 
@@ -159,9 +175,11 @@
         <!-- 发到其他市场的 APK 可以设置为 xxx-market。 -->
         <!-- 目前这个渠道统计功能的报表还未开放。-->
         <meta-data android:name="JPUSH_CHANNEL" android:value="developer-default"/>
-        <!-- Required. AppKey copied from Portal -->
         <meta-data android:name="JPUSH_APPKEY" android:value="ad1b18f68a90ac5f3ed4e41b"/>
 
+        <meta-data
+                android:name="com.amap.api.v2.apikey"
+                android:value="24300a6abfdeacde8e342816cdc80115"/>
     </application>
 
 </manifest>

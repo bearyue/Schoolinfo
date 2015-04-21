@@ -16,9 +16,9 @@
         android:layout_centerHorizontal="true"/>
 
     <ImageButton
+            android:id="@+id/new_message_button"
             android:layout_width="38dp"
             android:layout_height="38dp"
-            android:id="@+id/new_message_button"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:layout_marginRight="7dp"
@@ -26,12 +26,22 @@
             android:visibility="invisible"
             />
     <ImageButton
+            android:id="@+id/top10_button"
             android:layout_width="38dp"
             android:layout_height="38dp"
             android:layout_centerVertical="true"
             android:layout_marginLeft="13dp"
             android:background="@drawable/top10_button"
-            android:id="@+id/top10_button"
+            android:visibility="invisible"
+            />
+    <ImageButton
+            android:id="@+id/setting"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/settings"
             android:visibility="invisible"
             />
     <ImageView

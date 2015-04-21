@@ -19,7 +19,9 @@ import android.widget.*;
 import cn.jpush.android.api.CustomPushNotificationBuilder;
 import cn.jpush.android.api.JPushInterface;
 import com.bear.activity.activity_new_message;
+import com.bear.activity.activity_setting;
 import com.bear.activity.activity_web;
+import com.bear.util.InternalFileUtil;
 import com.bear.util.SharedPreferencesUtil;
 
 import java.util.ArrayList;
@@ -47,42 +49,45 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
     Animation operatingAnim;
     ImageButton top10_btn;
     boolean top10pressed =false;
-
     private TextView tab_first_text;
+
     private TextView tab_second_text;
     private TextView tab_third_text;
     private TextView tab_fouth_text;
     private TextView title;
-
     Fragment first_Fragment;
+
     Fragment second_Fragment;
     Fragment third_Fragment;
     Fragment fouth_Fragment;
-
     private ImageView cursor;
+
     private int currIndex;//µ±Ç°Ò³¿¨±àºÅ
     private int bmpW;//ºáÏßÍ¼Æ¬¿í¶È
     private int offset;//Í¼Æ¬ÒÆ¶¯µÄÆ«ÒÆÁ¿
-
     //´«µÝ¸øFragmentÐÂÁôÑÔ
     String sendcontent;
-    int senduid;
 
+    int senduid;
     private SecondFragment secondfragment_object;
+
     private FirstFragment firstfragment_object;
     private FragmentTransaction transaction;
-
     long exitTime=0;
+
+    private ImageButton setting_btn;
 
     MyFragmentPagerAdapter myFragmentPagerAdapter;
     SharedPreferencesUtil userinfo;
+    public static MainActivity instance = null;
 
     @Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.activity_main);
-            setStyleCustom();
+        instance = this;
+        setStyleCustom();
             initviewpager();
             initviews();
             initonclick();
@@ -156,6 +161,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
                     case 3:
                         tab_fouth_img.setImageResource(R.drawable.tab_fouth_selected);
                         title.setText("");
+                        setting_btn.setVisibility(View.VISIBLE);
                         break;
                 }
 
@@ -198,6 +204,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
         operatingAnim.setInterpolator(lin);
 
         top10_btn= (ImageButton) findViewById(R.id.top10_button);
+        setting_btn= (ImageButton) findViewById(R.id.setting);
     }
 
     private void initonclick() {
@@ -208,6 +215,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
         tab_newmessagebtn.setOnClickListener(this);
         news_refresh_button.setOnClickListener(this);
         top10_btn.setOnClickListener(this);
+        setting_btn.setOnClickListener(this);
     }
 
     @Override
@@ -258,6 +266,12 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
                     top10pressed=false;
                 }
                 secondfragment_object.gettop10();
+                break;
+            case R.id.setting:
+                Intent intent =new Intent(this,activity_setting.class);
+                startActivity(intent);
+                overridePendingTransition(android.R.anim.fade_in,android.R.anim.fade_out);
+                break;
             default:
                 break;
         }
@@ -273,6 +287,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
         news_refresh_button.clearAnimation();
         news_refresh_button.setVisibility(View.INVISIBLE);
         top10_btn.setVisibility(View.INVISIBLE);
+        setting_btn.setVisibility(View.INVISIBLE);
     }
 
     public void initcursor(){

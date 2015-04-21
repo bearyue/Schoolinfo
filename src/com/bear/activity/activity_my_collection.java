@@ -214,7 +214,7 @@ public class activity_my_collection extends Activity implements View.OnClickList
             // holder.shop_tel.setText(dataList.get(position).get("shop_tel").toString());
             holder.shop_other.setText(dataList.get(groupPosition).get("shop_other").toString());
 
-            final String imgUrl = dataList.get(groupPosition).get("shop_img").toString();   //list[position];
+            final String imgUrl =ipaddressUtil.IP+dataList.get(groupPosition).get("shop_img").toString();   //list[position];
             if (imgUrl != null && !imgUrl.equals("")) {
                 holder.shop_img.setDefaultImageResId(R.drawable.loading);
                 holder.shop_img.setErrorImageResId(R.drawable.error);

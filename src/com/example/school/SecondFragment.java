@@ -9,6 +9,7 @@ import android.util.Log;
 import android.widget.*;
 import com.bear.model.Message;
 import com.bear.http.messagehttp;
+import com.bear.util.InternalFileUtil;
 import com.bear.util.SharedPreferencesUtil;
 import com.bear.util.ipaddressUtil;
 import com.bear.util.GsonUtil;
@@ -32,7 +33,6 @@ public class SecondFragment extends Fragment {
 
     private static final String URLSTRING = ipaddressUtil.IP + "/SchoolInfo/servlet/MessageServlet";
 
-
     public PullToRefreshListView mPullRefreshListView;
     public ImageButton goodbutton;
     LinkedList<Map<String, Object>> dataList = new LinkedList<Map<String, Object>>();
@@ -45,17 +45,24 @@ public class SecondFragment extends Fragment {
     int top10=0;
 
     List<Message> list;
+    List<Message> savelist;
+
+    private String filename="messagetext";
+    InternalFileUtil ifile;
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.tab_second, container, false);
-        new GetDataTask().execute(URLSTRING);
+       // new GetDataTask().execute(URLSTRING);
         mPullRefreshListView = (PullToRefreshListView) view.findViewById(R.id.pull_refresh_list);
         mPullRefreshListView.setMode(Mode.BOTH);
         userinfo=new SharedPreferencesUtil(this.getActivity());
         adapter = new MyAdapter(SecondFragment.this.getActivity());
         System.out.println("set adapter");
         mPullRefreshListView.setAdapter(adapter);
+        ifile = new InternalFileUtil(this.getActivity(),filename);
+        ifile.create();
+        loadsavelist();
 
         mPullRefreshListView.setOnRefreshListener(new OnRefreshListener2<ListView>() {
             @Override
@@ -100,6 +107,15 @@ public class SecondFragment extends Fragment {
         return view;
     }
 
+    private void loadsavelist() {
+        if(ifile.read()!=""){
+            savelist = GsonUtil.getListFromJson(ifile.read());
+            System.out.println("savelist:"+ifile.read());
+            dataList = getadapterdata(savelist);
+            adapter.notifyDataSetChanged();
+        }
+    }
+
     public void setvalue(String um) {
         updatemessage = um;
     }
@@ -142,8 +158,9 @@ public class SecondFragment extends Fragment {
                 } else {
                     loadmoredate(list);
                 }
-
-                System.out.println("finish   " + dataList.size());
+                ifile.clean();
+                ifile.write(result);
+                System.out.println("finish   " + dataList.size()+"+"+ifile.read());
 
                 //通知程序数据集已经改变，如果不做通知，那么将不会刷新mListItems的集合
                 adapter.notifyDataSetChanged();

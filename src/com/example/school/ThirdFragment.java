@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
+import com.bear.activity.activity_map;
 import com.bear.activity.activity_shop;
 
 /**
@@ -48,14 +49,14 @@ public class ThirdFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 third.setBackgroundResource(R.drawable.third_tab_bg);
+                startActivity(new Intent(activity, activity_shop.class));
             }
         });
         fouth.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 fouth.setBackgroundResource(R.drawable.third_tab_bg);
-                startActivity(new Intent(activity, activity_shop.class));
-
+                startActivity(new Intent(activity, activity_map.class));
             }
         });
 

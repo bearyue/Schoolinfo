@@ -78,4 +78,13 @@ public class SharedPreferencesUtil {
     public boolean getisFirst() {
         return sp.getBoolean("isFirst", true);
     }
+    // 是否打开推送
+    public void setIsPush(boolean isFirst) {
+        editor.putBoolean("isPush", isFirst);
+        editor.commit();
+    }
+
+    public boolean getisPush() {
+        return sp.getBoolean("isPush", true);
+    }
 }

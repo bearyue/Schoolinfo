@@ -28,6 +28,14 @@
                 android:layout_marginLeft="2dp"
                 android:background="@drawable/button_back"
                 />
+        <ImageButton
+                android:id="@+id/location_btn"
+                android:layout_width="37dp"
+                android:layout_height="37dp"
+                android:layout_toLeftOf="@+id/shop_spinner"
+                android:layout_centerVertical="true"
+                android:background="@drawable/location"
+                />
 
         <Spinner
                 android:id="@+id/shop_spinner"

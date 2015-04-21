@@ -13,37 +13,25 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.ImageButton;
 import android.widget.ProgressBar;
-import android.widget.Toast;
 import com.example.school.R;
 
 /**
- * Created by bear on 2015/4/8.
+ * Created by bear on 2015/4/20.
  */
-public class activity_web extends Activity {
-
-    String address;
+public class activity_location_web extends Activity{
     WebView webView;
-    ImageButton closebtn;
     ProgressBar web_pb;
-
+    String address;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_PROGRESS);
-        setContentView(R.layout.activity_web);
+        setContentView(R.layout.activity_location_web);
 
         Bundle bundle = getIntent().getExtras();
         address = bundle.getString("address");
         //Toast.makeText(this, "address: "+address, Toast.LENGTH_SHORT).show();
         web_pb= (ProgressBar) findViewById(R.id.web_pb);
-        closebtn = (ImageButton) findViewById(R.id.news_close);
-        closebtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-                overridePendingTransition(R.anim.zoomin,R.anim.zoomout);
-            }
-        });
         init(address);
     }
 
