@@ -5,6 +5,7 @@ import android.hardware.usb.UsbRequest;
 import android.os.AsyncTask;
 import android.text.TextUtils;
 import android.widget.EditText;
+import com.bear.util.MD5Util;
 import com.bear.util.NotificationsUtil;
 import com.bear.util.SharedPreferencesUtil;
 import com.bear.util.ipaddressUtil;
@@ -34,6 +35,8 @@ public class activity_login extends Activity implements View.OnClickListener {
     String upassword;
     SharedPreferencesUtil userinfo;
     int getuserid;
+    MD5Util mdpass;
+    String mdpassword=null;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -41,7 +44,7 @@ public class activity_login extends Activity implements View.OnClickListener {
 		super.onCreate(savedInstanceState);
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_login);
-
+        mdpass =new MD5Util();
         //SharedPreferencesUtil userinfo =new SharedPreferencesUtil(activity_login.this);
         initview();
         initonclick();
@@ -77,9 +80,10 @@ public class activity_login extends Activity implements View.OnClickListener {
                 {
                     if(userpasswordEditTextFieldIsValid())
                     {
+                        mdpassword =mdpass.getMD5Str(upassword);
                         System.out.println(uname+""+upassword);
-                       LoginTask logintask= new LoginTask();
-                        logintask.execute(uname,upassword);
+                        LoginTask logintask= new LoginTask();
+                        logintask.execute(uname,mdpassword);
                         break;
                     }
                     Toast.makeText(getApplicationContext(), "ÃÜÂë²»ÄÜÎª¿Õ",
@@ -127,6 +131,7 @@ public class activity_login extends Activity implements View.OnClickListener {
             try {
                 if (result1==0) {
                     getuserid=lg.getId();
+                    System.out.println("getid="+getuserid);
                     return  true;
                 }else if(result1==2)
                 {
@@ -160,7 +165,7 @@ public class activity_login extends Activity implements View.OnClickListener {
             userinfo =new SharedPreferencesUtil(activity_login.this);
             if (result) {
                 userinfo.setName(uname);
-                userinfo.setPasswd(upassword);
+                userinfo.setPasswd(mdpassword);
                 userinfo.setLoginState(true);
                 userinfo.setId(getuserid);
               //  Toast.makeText(getApplicationContext(), "userid= "+userinfo.getId(), Toast.LENGTH_SHORT).show();  //ÃÜÂë´íÎó

@@ -7,13 +7,11 @@ import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.Window;
-import android.webkit.WebChromeClient;
-import android.webkit.WebSettings;
-import android.webkit.WebView;
-import android.webkit.WebViewClient;
+import android.webkit.*;
 import android.widget.ImageButton;
 import android.widget.ProgressBar;
 import android.widget.Toast;
+import com.example.school.MainActivity;
 import com.example.school.R;
 
 /**
@@ -23,15 +21,17 @@ public class activity_web extends Activity {
 
     String address;
     WebView webView;
+    WebView webView1 = null;
     ImageButton closebtn;
     ProgressBar web_pb;
+    public static activity_web web_instance =null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_PROGRESS);
         setContentView(R.layout.activity_web);
-
+        web_instance=this;
         Bundle bundle = getIntent().getExtras();
         address = bundle.getString("address");
         //Toast.makeText(this, "address: "+address, Toast.LENGTH_SHORT).show();
@@ -110,10 +110,16 @@ public class activity_web extends Activity {
             }
             else
             {
+                //clearWebViewCache();
                 finish();//ÍË³ö³ÌÐò
                 overridePendingTransition(R.anim.zoomin,R.anim.zoomout);
             }
         }
         return super.onKeyDown(keyCode, event);
     }
+
+    public void clearWebViewCache() {
+        webView.clearCache(true);
+    }
+
 }

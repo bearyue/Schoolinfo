@@ -89,6 +89,10 @@
                 android:name="com.bear.activity.activity_setting"
                 android:screenOrientation="portrait">
         </activity>
+        <activity
+                android:name="com.bear.activity.activity_schoolinfo"
+                android:screenOrientation="portrait">
+        </activity>
 
         <activity
                 android:name="com.bear.activity.activity_splash"

@@ -35,7 +35,7 @@ import java.util.Map;
  */
 public class activity_shop extends Activity {
     private static final String URLSTRING = ipaddressUtil.IP + "/SchoolInfo/servlet/ShopServlet";
-    private static final String URLSTRING1 = ipaddressUtil.IP + "/SchoolInfo/servlet/CollectionServlet";
+    private static final String URLSTRING1 =ipaddressUtil.IP + "/SchoolInfo/servlet/CollectionServlet";
 
     ImageButton back_btn;
     ImageButton location_btn;
@@ -212,10 +212,10 @@ public class activity_shop extends Activity {
     }
 
     public List<Map<String, Object>> getadapterdata(List list) {
-        List<Map<String, Object>> data = new ArrayList<Map<String, Object>>();
-        List<Map<String, Object>> typedata = new ArrayList<Map<String, Object>>();
-        List<Map<String, Object>> type1data = new ArrayList<Map<String, Object>>();
-        List<Map<String, Object>> type2data = new ArrayList<Map<String, Object>>();
+            List<Map<String, Object>> data = new ArrayList<Map<String, Object>>();
+            List<Map<String, Object>> typedata = new ArrayList<Map<String, Object>>();
+            List<Map<String, Object>> type1data = new ArrayList<Map<String, Object>>();
+            List<Map<String, Object>> type2data = new ArrayList<Map<String, Object>>();
         List<Map<String, Object>> type3data = new ArrayList<Map<String, Object>>();
         for (int i = 0; i < list.size(); i++) {
             Map<String, Object> map = new HashMap<String, Object>();

@@ -68,7 +68,6 @@ public class SharedPreferencesUtil {
         editor.commit();
     }
 
-
     // 是否第一次运行本应用
     public void setIsFirst(boolean isFirst) {
         editor.putBoolean("isFirst", isFirst);

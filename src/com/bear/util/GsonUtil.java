@@ -7,9 +7,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 import android.util.Log;
-import com.bear.model.Collection;
-import com.bear.model.News;
-import com.bear.model.Shop;
+import com.bear.model.*;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
@@ -27,7 +25,6 @@ import android.app.Application;
 import android.content.Context;
 import android.widget.Toast;
 
-import com.bear.model.Message;
 import com.google.gson.Gson;
 
 public class GsonUtil {
@@ -45,8 +42,8 @@ public class GsonUtil {
             HttpParams params = null;
             params = httpClient.getParams();
             //set timeout
-            HttpConnectionParams.setConnectionTimeout(params, 3500);
-            HttpConnectionParams.setSoTimeout(params, 40000);
+            HttpConnectionParams.setConnectionTimeout(params, 2700);
+            HttpConnectionParams.setSoTimeout(params, 30000);
 		//	request= new HttpPost(new URI(url));
             HttpResponse response;
             HttpPost httpost = new HttpPost(url);
@@ -92,8 +89,8 @@ public class GsonUtil {
             HttpParams params = null;
             params = httpClient.getParams();
             //set timeout
-            HttpConnectionParams.setConnectionTimeout(params, 5000);
-            HttpConnectionParams.setSoTimeout(params, 35000);
+            HttpConnectionParams.setConnectionTimeout(params, 2700);
+            HttpConnectionParams.setSoTimeout(params, 30000);
 		//	request= new HttpPost(new URI(url));
             HttpResponse response;
             HttpPost httpost = new HttpPost(url);
@@ -150,6 +147,15 @@ public class GsonUtil {
         }.getType();
         Gson gson = new Gson();
         List<Collection> list = gson.fromJson(json,type);
+        return list;
+    }
+    public static List<School> getSchoolinfoListFromJson(String json) {
+        //运行时记得将GSON的jar包设置export，要不然程序崩溃，下面这句出错；
+        //具体设置为：工程properties->java build path->order and export ->勾选需要的包
+        java.lang.reflect.Type type = new com.google.gson.reflect.TypeToken<List<School>>() {
+        }.getType();
+        Gson gson = new Gson();
+        List<School> list = gson.fromJson(json,type);
         return list;
     }
 

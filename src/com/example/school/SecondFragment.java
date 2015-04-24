@@ -281,7 +281,7 @@ public class SecondFragment extends Fragment {
                         Log.v("MyListViewBase", "你点击了按钮的message_id 为：" + u_id + "  + " + m_id);//打印Button的点击信息
 
                         if (Integer.parseInt(dataList.get(position).get("button_image").toString()) == 0) {//更新服务器数据
-                            new UpDateTask().execute(u_id, m_id);
+                            new UpDateTask().execute(Integer.toString(userinfo.getId()), m_id);
                             int up1 = Integer.parseInt(dataList.get(position).get("goodtimes").toString());
                             up1 = up1 + 1;
                             holder.goodbutton.setBackgroundResource(R.drawable.thumbs_up2);
@@ -319,7 +319,6 @@ public class SecondFragment extends Fragment {
         @Override
         protected Boolean doInBackground(String... params) {
             Log.v("background", "doinback");
-
             try {
                 gt.updategoodtimes(params[0], params[1]);
             } catch (Exception e) {

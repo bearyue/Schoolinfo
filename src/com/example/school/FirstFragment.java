@@ -151,11 +151,6 @@ public class FirstFragment extends Fragment implements View.OnClickListener {
         @Override
         protected String doInBackground(String... params) {
             String result =null;
-            try {
-                Thread.sleep(1000);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
             try
             {
                 System.out.println("parmas result: "+params[0]);
@@ -169,6 +164,13 @@ public class FirstFragment extends Fragment implements View.OnClickListener {
             } catch (Exception e) {
                 System.out.println(e);
             }
+            if(result!=null){
+                try {
+                    Thread.sleep(1000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
             return result;
         }
 
@@ -177,7 +179,7 @@ public class FirstFragment extends Fragment implements View.OnClickListener {
             if(result==null)
             {
                 is_refresh_success=0;
-                Toast.makeText(FirstFragment.this.getActivity(),ipaddressUtil.errormessage.toString(), Toast.LENGTH_SHORT).show();  //ÍøÂç´íÎó
+                Toast.makeText(FirstFragment.this.getActivity(),"ÍøÂç´íÎó", Toast.LENGTH_SHORT).show();  //ÍøÂç´íÎó
             }else{
                 is_refresh_success=1;
                 if(listsize==0){
@@ -258,7 +260,7 @@ public class FirstFragment extends Fragment implements View.OnClickListener {
 
         if(is_refresh_success==1){
             Handler delay = new Handler();
-            delay.postDelayed(new NewsUpdateToast(),1800);
+            delay.postDelayed(new NewsUpdateToast(),2700);
         }
     }
 
@@ -327,7 +329,7 @@ public class FirstFragment extends Fragment implements View.OnClickListener {
             if(type==0){
                 final String imgUrl = dataList.get(position).get("news_img").toString();   //list[position];
 
-                Picasso.with(getActivity()).load(imgUrl).into(holder.news_imageview);
+                Picasso.with(getActivity()).load(imgUrl).placeholder(R.drawable.loading).into(holder.news_imageview);
 
                 /*if (imgUrl != null && !imgUrl.equals("")) {
                     holder.news_img.setDefaultImageResId(R.drawable.loading);
@@ -335,8 +337,6 @@ public class FirstFragment extends Fragment implements View.OnClickListener {
                     holder.news_img.setImageUrl(imgUrl, imageLoader);
                 }*/
             }
-
-
             return convertView;
         }
 

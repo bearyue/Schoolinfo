@@ -92,9 +92,11 @@ public class loginhttp {
     public void setId(int uid)
     {
         userid=uid;
+        System.out.println("setid="+userid);
     }
     public int getId()
     {
+
         return userid;
     }
   }

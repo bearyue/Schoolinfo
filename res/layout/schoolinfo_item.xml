@@ -3,7 +3,82 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:orientation="vertical"
               android:layout_width="match_parent"
-              android:layout_height="match_parent">
-    
+              android:layout_height="match_parent"
+              android:background="@drawable/schoolinfo_bg">
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:orientation="vertical"
+            >
+        <TextView
+                android:id="@+id/s_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="计算机学院"
+                android:textStyle="bold"
+                android:layout_marginTop="8dp"
+                android:textSize="20dp"
+                />
+        <TextView
+                android:id="@+id/s_other"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="office:za505"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="5dp"
+                android:textColor="@color/gray"
+                android:textSize="15dp"
+                />
+    </LinearLayout>
+
+    <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="0.7dp"
+            android:background="@color/gray"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            ></RelativeLayout>
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:orientation="horizontal"
+            >
+        <RelativeLayout
+                android:id="@+id/web_layout"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                >
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:text="网站"
+                    android:textSize="15dp"
+                    />
+        </RelativeLayout>
+        <RelativeLayout
+                android:layout_width="0.7dp"
+                android:layout_height="30dp"
+                android:background="@color/gray"
+                android:layout_marginTop="5dp"
+                ></RelativeLayout>
+        <RelativeLayout
+                android:id="@+id/phone_layout"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                >
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:text="电话"
+                    android:textSize="15dp"
+                    />
+        </RelativeLayout>
+     </LinearLayout>
 
 </LinearLayout>

@@ -8,6 +8,7 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.view.Window;
 import android.widget.*;
+import com.bear.util.MD5Util;
 import com.bear.util.NotificationsUtil;
 import com.bear.util.ipaddressUtil;
 import com.bear.http.loginhttp;
@@ -32,6 +33,8 @@ public class activity_register extends Activity{
     registerhttp register ;
     ProgressDialog mProgressDialog;
 
+    MD5Util md;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,7 +52,8 @@ public class activity_register extends Activity{
         registername = (EditText) findViewById(R.id.registername);
         registerpassward = (EditText) findViewById(R.id.registerpassword);
         Registerpassward2 = (EditText) findViewById(R.id.confirmpassword);
-
+        register=new registerhttp();
+        md =new MD5Util();
     }
 
     private void onclick() {
@@ -78,13 +82,13 @@ public class activity_register extends Activity{
             showProgressDialog();
         }
         protected Integer doInBackground(Void... params) {
-            register=new registerhttp();
             loginhttp lg = new loginhttp();
             loginhttp check;
             try {
                 String rname =registername.getText().toString().trim();
                 String rpassword =registerpassward.getText().toString().trim();
                 String rpassword2=Registerpassward2.getText().toString().trim();
+                String mdstr =md.getMD5Str(rpassword);
                 int result=99;
                 System.out.println(rname+"     "+rpassword);
                 if(rname==null||rname.length()<=0)
@@ -100,12 +104,12 @@ public class activity_register extends Activity{
                 {
                     result=3;
                 }
-                else if(lg.Login(rname,rpassword,1)==0)
+                else if(lg.Login(rname,mdstr,1)==0)
                 {
                     result=1;
                 }
                 else{
-                    if(register.register(rname, rpassword)){
+                    if(register.register(rname, mdstr)){
                         result=5;
                     }
                     else{
@@ -124,9 +128,7 @@ public class activity_register extends Activity{
             if(result==5){
                 Toast.makeText(activity_register.this, "×¢²á³É¹¦",
                         Toast.LENGTH_LONG).show();
-             /*   Intent intent = new Intent(activity_register.this, activity_login.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                startActivity(intent);*/
+
                 finish();
                 overridePendingTransition(R.anim.zoomin,R.anim.zoomout);
             }

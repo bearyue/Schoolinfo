@@ -9,7 +9,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 import com.bear.activity.activity_map;
+import com.bear.activity.activity_schoolinfo;
 import com.bear.activity.activity_shop;
+import com.bear.activity.activity_web;
 
 /**
  * Created by bear on 2015/3/25.
@@ -36,13 +38,18 @@ public class ThirdFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 first.setBackgroundResource(R.drawable.third_tab_bg);
-
+                Intent intent = new Intent(activity, activity_schoolinfo.class);
+                intent.putExtra("flag",1);
+                startActivity(intent);
             }
         });
         second.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 second.setBackgroundResource(R.drawable.third_tab_bg);
+                Intent intent = new Intent(activity, activity_schoolinfo.class);
+                intent.putExtra("flag",2);
+                startActivity(intent);
             }
         });
         third.setOnClickListener(new View.OnClickListener() {
